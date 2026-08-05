@@ -1,0 +1,317 @@
+//package multiThreading;
+//
+//public class FindFact {
+//	
+//	public static void main(String[] args) {
+//		
+//		long startTime = System.currentTimeMillis();
+//		Thread[] threads = new Thread[9];
+//		for(int i=1;i<10;i++) {
+//			int finall = i;
+//			threads[i-1] = new Thread(
+//			
+//					() -> {
+//						long result = factorial(finall);
+//						System.out.println(result);
+//					}
+//			);
+//			
+//			threads[i-1].start();
+//			
+//		}
+//		for(Thread thread : threads) {
+//			try {
+//				thread.join();
+//			}
+//			catch(InterruptedException e) {
+//				Thread.currentThread().interrupt();
+//			}
+//		}
+//		System.out.println("Total Time: " + (System.currentTimeMillis() - startTime));
+//	}
+//	
+//	private static long factorial(int n) {
+//		try {
+//			Thread.sleep(1000);
+//		}
+//		catch(InterruptedException e) {
+//			Thread.currentThread().interrupt();
+//		}
+//		long result = 1;
+//		for(int i=1;i<=n;i++) {
+//			result *= i;
+//		}
+//		return result;
+//	}
+//	
+//}
+
+
+
+
+
+
+
+//package multiThreading;
+//
+//import java.util.concurrent.Executors;
+//import java.util.concurrent.TimeUnit;
+//import java.util.concurrent.ExecutorService;
+//
+//public class FindFact {
+//	
+//	public static void main(String[] args) {
+//		
+//		long startTime = System.currentTimeMillis();
+//		ExecutorService executorService = Executors.newFixedThreadPool(3);
+//		for(int i=1;i<10;i++) {
+//			int finall = i;
+//			executorService.submit(
+//					() -> {
+//				long result = factorial(finall);
+//				System.out.println(result);
+//			}
+//			);
+//			
+//		}
+//		
+//		executorService.shutdown();
+//		try {
+//			executorService.awaitTermination(100, TimeUnit.SECONDS);
+//		}
+//		catch(InterruptedException e) {
+//			throw new RuntimeException(e);
+//		}
+//		
+//		System.out.println("Total Time: " + (System.currentTimeMillis() - startTime));
+//	}
+//	
+//	private static long factorial(int n) {
+//		try {
+//			Thread.sleep(1000);
+//		}
+//		catch(InterruptedException e) {
+//			Thread.currentThread().interrupt();
+//		}
+//		long result = 1;
+//		for(int i=1;i<=n;i++) {
+//			result *= i;
+//		}
+//		return result;
+//	}
+//	
+//}
+
+
+
+
+
+//package multiThreading;
+//
+//import java.util.*;
+//import java.util.concurrent.*;
+//
+//public class FindFact {
+//	
+////	public static void main(String[] args) throws ExecutionException, InterruptedException {
+//	public static void main(String[] args) {
+////		ExecutorService executorService = Executors.newSingleThreadExecutor();
+////		Future<?> future = executorService.submit(() -> System.out.println("Hello"));
+////		future.get();
+////		executorService.shutdown();
+//		
+////		ExecutorService executorService = Executors.newFixedThreadPool(2);
+////		Future<Integer> submit = executorService.submit(() -> 1 + 2);
+////		Integer i = submit.get();
+////		System.out.println("sum is: " + i);
+////		executorService.shutdown();
+////		System.out.println(executorService.isShutdown());
+////		Thread.sleep(1);
+////		System.out.println(executorService.isTerminated());
+//		
+////		ExecutorService executorService = Executors.newFixedThreadPool(2);
+////		
+////		Callable<Integer> callable1 = () -> {
+////			System.out.println("Task 1");
+////			return 1;
+////		};
+////		Callable<Integer> callable2 = () -> {
+////			System.out.println("Task 2");
+////			return 2;
+////		};
+////		Callable<Integer> callable3 = () -> {
+////			System.out.println("Task 3");
+////			return 3;
+////		};
+////		
+////		List<Callable<Integer>> list = Arrays.asList(callable1,callable2,callable3);
+////		
+////		List<Future<Integer>> futures = executorService.invokeAll(list);
+////		
+////		for(Future<Integer> f : futures) {
+////			System.out.println(f.get());
+////		}
+////		
+////		executorService.shutdown();
+////		System.out.println(executorService.isTerminated());
+//		
+//		
+//		
+////		ExecutorService executorService = Executors.newFixedThreadPool(2);
+////		
+////		Callable<Integer> callable1 = () -> {
+////			Thread.sleep(1000);
+////			System.out.println("Task 1");
+////			return 1;
+////		};
+////		Callable<Integer> callable2 = () -> {
+////			Thread.sleep(1000);
+////			System.out.println("Task 2");
+////			return 2;
+////		};
+////		Callable<Integer> callable3 = () -> {
+////			Thread.sleep(1000);
+////			System.out.println("Task 3");
+////			return 3;
+////		};
+////		
+////		List<Callable<Integer>> list = Arrays.asList(callable1,callable2,callable3);
+////		
+////		List<Future<Integer>> futures = null;
+////		
+////		try {
+////			futures = executorService.invokeAll(list,1,TimeUnit.SECONDS);
+////		}
+////		catch(InterruptedException e) {
+////			throw new RuntimeException(e);
+////		}
+////		
+////		for(Future<Integer> f : futures) {
+////			try {
+////				System.out.println(f.get());
+////			}
+////			catch(CancellationException e) {
+////				
+////			}
+////			catch(InterruptedException e) {
+////				
+////			}
+////			catch(ExecutionException e) {
+////				
+////			}
+////		}
+////		
+////		executorService.shutdown();
+////		System.out.println(executorService.isTerminated());
+//		
+//		
+//		
+//		
+////		ExecutorService executorService = Executors.newFixedThreadPool(2);
+////		
+////		Callable<Integer> callable1 = () -> {
+////			Thread.sleep(1000);
+////			System.out.println("Task 1");
+////			return 1;
+////		};
+////		Callable<Integer> callable2 = () -> {
+////			Thread.sleep(1000);
+////			System.out.println("Task 2");
+////			return 2;
+////		};
+////		Callable<Integer> callable3 = () -> {
+////			Thread.sleep(1000);
+////			System.out.println("Task 3");
+////			return 3;
+////		};
+////		
+////		List<Callable<Integer>> list = Arrays.asList(callable1,callable2,callable3);
+////		
+////		try {
+////			Integer i = executorService.invokeAny(list);
+////			System.out.println(i);
+////		}
+////		catch(InterruptedException e) {
+////			throw new RuntimeException(e);
+////		}
+////		catch(ExecutionException e) {
+////			throw new RuntimeException(e);
+////		}
+////		
+////		executorService.shutdown();
+////		System.out.println(executorService.isTerminated());
+//		
+//		
+//		
+//		ExecutorService executorService = Executors.newFixedThreadPool(2);
+//		
+//		Future<Integer> future = executorService.submit(() -> {
+//			try {
+//				Thread.sleep(2000);
+//			}
+//			catch(InterruptedException e) {
+//				System.out.println("Exception occurred: " + e);
+//			}
+//			System.out.println("Hello");
+//			return 42;
+//		});
+//		
+////		Integer i = null;
+////		
+////		try {
+////			i = future.get(1,TimeUnit.SECONDS);
+////			System.out.println(future.isDone());
+////			System.out.println(i);
+////		}
+////		catch(TimeoutException | InterruptedException | ExecutionException e) {
+////			System.out.println("Exception occurred: " + e);
+////		}
+//		
+//		try {
+//			Thread.sleep(1000);
+//		}
+//		catch(InterruptedException e) {
+//			System.out.println("Exception occurred: " + e);
+//		}
+//		
+//		future.cancel(false);
+//		System.out.println(future.isCancelled());
+//		System.out.println(future.isDone());
+//		
+//		executorService.shutdown();
+//		
+//		
+//	}
+//	
+//}
+
+
+
+
+
+
+
+package multiThreading;
+
+import java.util.*;
+import java.util.concurrent.*;
+
+public class FindFact {
+	
+	public static void main(String[] args) {
+		ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
+		
+//		scheduler.schedule(() -> System.out.println("Task executed after five seconds delay"), 5, TimeUnit.SECONDS);
+		
+		scheduler.scheduleAtFixedRate(() -> System.out.println("Task executed after every five seconds"), 5, 5, TimeUnit.SECONDS);
+		
+		ScheduledFuture<?> scheduledFuture = scheduler.scheduleWithFixedDelay(() -> System.out.println("Task executed after every five seconds"), 5, 5, TimeUnit.SECONDS);
+		
+		scheduler.schedule(() -> {
+			System.out.println("Initiating shutdown...");
+			scheduler.shutdown();
+		}, 20, TimeUnit.SECONDS);
+		
+	}
+	
+}
