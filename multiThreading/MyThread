@@ -1,0 +1,163 @@
+package multiThreading;
+
+//public class MyThread extends Thread{
+//
+//    @Override
+//    public void run(){
+//
+//        System.out.println("RUNNING");
+//        try{
+//            Thread.sleep(2000); // TIMED_WAITING
+//        }
+//        catch(InterruptedException e){
+//            System.out.println(e);
+//        }
+//
+//    }
+//
+//    public static void main(String[] args) throws InterruptedException{
+//        MyThread t1 = new MyThread();
+//        System.out.println(t1.getState());  // NEW
+//        t1.start();
+//        System.out.println(t1.getState());  // RUNNABLE
+//        Thread.sleep(100);
+//        System.out.println(t1.getState());
+//        t1.join();
+//        System.out.println(t1.getState());  // TERMINATED after 2 sec.
+//    }
+//}
+
+
+
+public class MyThread extends Thread{
+	
+	
+	private Counter counter;
+	
+	public MyThread(Counter counter) {
+		this.counter = counter;
+	}
+	
+	
+	@Override
+	public void run() {
+		for(int i=0;i<1000;i++) {
+			counter.increment();
+		}
+	}
+	
+	
+	
+	
+//	public MyThread(String name) {
+//		super(name);
+//	}
+
+//    @Override
+//    public void run(){
+
+//        System.out.println("Thread is running...");
+//    	for(int i=1;i<=5;i++) {
+//    		try {
+//    			Thread.sleep(1000);    // wait for 1 sec for every i
+//    		}
+//    		catch(InterruptedException e) {
+//    			throw new RuntimeException(e);
+//    		}
+//    		System.out.println(i);
+//    	}
+    	
+//    	try {
+//			Thread.sleep(5000);    // wait for 1 sec for every i
+//		}
+//		catch(InterruptedException e) {
+//			throw new RuntimeException(e);
+//		}
+    	
+    	// how to get the priority... 
+//    	for(int i=0;i<5;i++) {
+//    		System.out.println(Thread.currentThread().getName() + "- Priority: " + Thread.currentThread().getPriority() + "-count: " + i);
+//    		try {
+//    			Thread.sleep(100);
+//    		}
+//    		catch(Exception e) {
+//    			
+//    		}
+//    	}
+    	
+//        try {
+//        	Thread.sleep(1000);
+//        	System.out.println("Thread is running...");
+//        }
+//        catch(InterruptedException e) {
+//        	System.out.println("Thread interrupted: " + e);
+//        }
+    	
+//    	for(int i=0;i<5;i++) {
+//    		System.out.println(Thread.currentThread().getName() + " is running");
+//    		Thread.yield();    // instead of printing all threads of same type together, it will give chance to another in between
+//    	}
+    	
+//    	while(true) {
+//    		System.out.println("Hello World");
+//    	}
+    	
+//    }
+
+//    public static void main(String[] args) throws InterruptedException{
+	
+    public static void main(String[] args){
+
+//       MyThread t1 = new MyThread();
+//       t1.start();
+//       t1.join();	// print hello after completing 5 sec.
+//       System.out.println("Hello");
+    	
+//    	MyThread t1 = new MyThread();
+//    	t1.start();    // we will get the result like this - Thread-0- Priority: 5-count: 0  if we want to change the name of thread we have to create a constructor of thread class and pass the name
+    	
+//    	MyThread t1 = new MyThread("neha");
+//    	t1.start();    // Neha- Priority: 5-count: 0
+    	
+//    	MyThread t1 = new MyThread("neha");
+//    	t1.setPriority(Thread.MIN_PRIORITY);	// that's how to set the priority
+//    	t1.start();    // Neha- Priority: 5-count: 0
+    	
+    	
+    	
+    	
+//    	MyThread l = new MyThread("low priority thread");
+//    	MyThread m = new MyThread("medium priority thread");
+//    	MyThread h = new MyThread("high priority thread");
+//    	l.setPriority(Thread.MIN_PRIORITY);
+//    	m.setPriority(Thread.NORM_PRIORITY);
+//    	h.setPriority(Thread.MAX_PRIORITY);
+//    	l.start();
+//    	m.start();
+//    	h.start();
+    	
+//    	MyThread t1 = new MyThread();
+//    	t1.start();
+//    	t1.interrupt();    // this will interrupt the running task and will throw an exception
+    	
+    	
+//    	MyThread t1 = new MyThread();
+//    	MyThread t2 = new MyThread();
+//    	t1.start();
+//    	t2.start();
+    	
+    	
+//    	MyThread t1 = new MyThread();
+//    	t1.setDaemon(true);
+//    	MyThread t2 = new MyThread();
+//    	t2.start();
+//    	t1.start();
+//    	System.out.println("Main Done");
+    	
+    	
+    	
+    	
+    	
+    
+    }
+}
