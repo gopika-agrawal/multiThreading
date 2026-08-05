@@ -1,0 +1,35 @@
+package multiThreading;
+
+public class Counter {
+	
+	private int count = 0;
+	
+	
+//	known as race condition
+//	public void increment() {
+//		count++;
+//	}
+	
+	
+	// known as critical section
+	public synchronized void increment() {
+		count++;
+	}
+	
+	// mutual exclusion - ensure that multiple threads will not access the critical section simultaneously
+	
+	
+//	that's how to create synchronized block
+//	public void increment() {
+//		synchronized(this) {
+//			count++;
+//		}
+//	}
+	
+	
+	
+	public int getCount() {
+		return count;
+	}
+	
+}
