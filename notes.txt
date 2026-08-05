@@ -1,4 +1,4 @@
-CPU - The CPU, often referred to as the brain of the computer, is responsible for execting instructions from programs.
+CPU - The CPU, often referred to as the brain of the computer, is responsible for executing instructions from programs.
 it performs basic arithmetic, logic, control and input/output operations specified by the instructions.
 Example - A modern CPU like the intel Core i7 or AMD Ryzen 7.
 
@@ -92,3 +92,58 @@ Runnable: After the start method is called, the thread becomes runnable. its rea
 Running: The thread is in this state when it is executing.
 Blocked/Waiting: A thread is in this state when it is waiting for a resource or for another thread to perform an action.
 Terminated: A thread is in this state when it has finished executing.
+
+Locks - means synchronization - means at a time only one thread will have access to use the resources available.
+
+Two types of Locks :- 
+1. Intrinsic = these are built into every object in java. you don't see them, but they're there.
+   when you use a synchronized keyword, you're using these automatic locks.
+
+2. Explicit = these are more advanced locks you can control yourself using the Lock class from java.util.concurrent.locks.
+   you explicitly say when to lock and unlock, giving you more control over how and when people can write in the notebook(means use the resource).
+
+Disadvantages of Synchronization :- 
+1. No fairness - means there may be a situation in which one thread will not access the resources (starvation).
+2. Indefinite Blocking
+3. No Interruptibility - means we can not interrupt the thread explicitly for another thread to use the resources.
+4. No read / write locking - leads to unnecessary blocking
+
+
+Deadlock - Deadlock is a situation in miltithreading where two or more threads are blocked forever, waiting for each other to release a resource.
+           This typically occurs when two or more threads have circular dependencies on a set of locks.
+
+DeadLocks typically occur when four conditions are met simultaneously: 
+1. Mutual Exclusion: Only one thread can access a resource at a time.
+2. Hold and Wait: A thread holding atleast one resource is waiting to acquire additional resources held by other threads.
+3. No Preemption: Resources can not be forcibly taken from threads holding them.
+4. Circular Wait: A set of threads is waiting for each other in a circular chain.
+
+In a multithreaded environment, threads often need to communicate and coordinate with each other to accomplish a task.
+Without proper communication mechanisms, threads might end up in inefficient busy-waiting states, leading to wastage of CPU resources and 
+potential deadlocks.
+
+Thread safety means no race condition means no more than one thread is trying to access the same resource.
+
+Thread Pool - Collection of pre-initialized threads that are ready to perform a task.
+Resource Management, Response Time, Control over thread count are the advantages of thread pool.
+
+
+Executors Framework - was introduced in java 5 as part of the java.util.concurrent package to simplify the development of concurrent applications 
+by abstracting away many of the complexities involved in creating and managing threads.
+
+if we create thread manually then we have to face the following problems :- 
+manual thread management
+resource mangement
+scalability
+thread reuse
+error handling
+
+
+Executor framework includes :- 
+Executor
+ExecutorService
+ScheduledExecutorService
+
+Difference between Runnable and Callable :- 
+Runnable is used when we don't want to return something while Callable is used to return something.
+Runnable interface has a method run and Callable interface has a method call which throws an exception.
